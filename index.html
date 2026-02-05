@@ -66,12 +66,45 @@
         grid-template-columns: repeat(10, 1fr);
         grid-template-rows: repeat(20, 1fr);
         gap: 0;
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        --board-padding: 8px;
+        background-color: #0b1220;
+        background-image: repeating-linear-gradient(
+            to right,
+            rgba(148, 163, 184, 0.45) 0,
+            rgba(148, 163, 184, 0.45) 1px,
+            transparent 1px,
+            transparent 100%
+          ),
+          repeating-linear-gradient(
+            to bottom,
+            rgba(148, 163, 184, 0.45) 0,
+            rgba(148, 163, 184, 0.45) 1px,
+            transparent 1px,
+            transparent 100%
+          );
+        background-size: calc(100% / 10) calc(100% / 20);
+        padding: var(--board-padding);
+=======
         background: #0b1220;
         padding: 8px;
+>>>>>>> main
         border-radius: 18px;
         width: min(70vw, 360px);
         aspect-ratio: 1 / 2;
         border: 1px solid #1f2937;
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        position: relative;
+      }
+
+      .cell {
+        background: transparent;
+        border-radius: 0;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        border: 1px dotted rgba(148, 163, 184, 0.45);
+=======
       }
 
       .cell {
@@ -79,10 +112,15 @@
         border-radius: 0;
         position: relative;
         overflow: hidden;
+>>>>>>> main
       }
 
       .cell.filled {
         box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.35);
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        border-color: transparent;
+=======
+>>>>>>> main
       }
 
       .cell.square {
@@ -97,6 +135,25 @@
         background: linear-gradient(135deg, #22c55e, #16a34a);
       }
 
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      .label-layer {
+        position: absolute;
+        inset: var(--board-padding);
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(20, 1fr);
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .block-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: clamp(11px, 1.9vw, 15px);
+        padding: 4px 6px;
+=======
       .cell span {
         position: absolute;
         inset: 0;
@@ -106,6 +163,7 @@
         font-size: clamp(10px, 1.6vw, 14px);
         text-align: center;
         padding: 4px;
+>>>>>>> main
         color: #f8fafc;
         line-height: 1.15;
         font-weight: 600;
@@ -164,7 +222,10 @@
           </div>
           <label>
             Dificultad
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+=======
             <select id="difficulty">
+>>>>>>> main
             <select id="difficulty-select">
               <option value="basico">Básico</option>
               <option value="medio">Medio</option>
@@ -188,7 +249,10 @@
         <ol id="phrases"></ol>
       </aside>
     </main>
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+=======
     <script src="script.js"></script>
+>>>>>>> main
     <script>
       const COLS = 10;
       const ROWS = 20;
@@ -197,6 +261,13 @@
       const CONJUGATIONS_PER_LEVEL = 20;
 
       const PRONOUNS = ["yo", "tú", "él", "ella", "nosotros", "ustedes", "ellos"];
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      const NOUNS = ["casa", "libro", "café", "música", "parque", "amigo", "ciudad"];
+      const PREPOSITIONS = ["en", "con", "sobre", "para", "desde", "hacia"];
+      const DEFINITE_ARTICLES = ["el", "la", "los", "las"];
+      const INDEFINITE_ARTICLES = ["un", "una", "unos", "unas"];
+      const ARTICLES = [...DEFINITE_ARTICLES, ...INDEFINITE_ARTICLES];
+=======
       const NOUNS = [
         "la casa",
         "el libro",
@@ -211,6 +282,7 @@
         articulosDef: ["el", "la", "los", "las"],
         articulosInd: ["un", "una", "unos", "unas"],
       };
+>>>>>>> main
 
       const VERBS = {
         hablar: {
@@ -236,6 +308,10 @@
       };
 
       const board = document.getElementById("board");
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      let labelLayer = null;
+=======
+>>>>>>> main
       const scoreEl = document.getElementById("score");
       const phrasesEl = document.getElementById("phrases");
       const restartBtn = document.getElementById("restart");
@@ -287,6 +363,13 @@
           cell.className = "cell";
           board.appendChild(cell);
         }
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        labelLayer = document.createElement("div");
+        labelLayer.className = "label-layer";
+        labelLayer.setAttribute("aria-hidden", "true");
+        board.appendChild(labelLayer);
+=======
+>>>>>>> main
       }
 
       function cellIndex(x, y) {
@@ -303,6 +386,12 @@
             cell.innerHTML = "";
             if (data) {
               cell.classList.add("filled", data.type);
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+            }
+          }
+        }
+        renderLabels();
+=======
               if (data.text && data.showText) {
                 const span = document.createElement("span");
                 span.textContent = data.text;
@@ -311,6 +400,7 @@
             }
           }
         }
+>>>>>>> main
       }
 
       function randomFrom(list) {
@@ -340,9 +430,15 @@
         }
         if (type === "lshape") {
           const noun = randomFrom(NOUNS);
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+          const complement = buildComplement(noun);
+          text = complement.text;
+          payload = { noun, pattern: complement.pattern };
+=======
           const modifier = randomModifier();
           text = `${modifier} ${noun}`;
           payload = { noun };
+>>>>>>> main
         }
 
         return {
@@ -356,9 +452,24 @@
         };
       }
 
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      function buildComplement(noun) {
+        const pattern = randomFrom(["article", "preposition", "preposition_article"]);
+        if (pattern === "article") {
+          return { text: `${randomFrom(ARTICLES)} ${noun}`, pattern };
+        }
+        if (pattern === "preposition") {
+          return { text: `${randomFrom(PREPOSITIONS)} ${noun}`, pattern };
+        }
+        return {
+          text: `${randomFrom(PREPOSITIONS)} ${randomFrom(ARTICLES)} ${noun}`,
+          pattern,
+        };
+=======
       function randomModifier() {
         const groups = Object.values(MODIFIERS);
         return randomFrom(randomFrom(groups));
+>>>>>>> main
       }
 
       function rotatedShape(type, rotation) {
@@ -391,7 +502,11 @@
 
       function placeBlock(block) {
         const shape = rotatedShape(block.type, block.rotation);
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        shape.forEach(({ x, y }) => {
+=======
         shape.forEach(({ x, y }, index) => {
+>>>>>>> main
           const gx = block.x + x;
           const gy = block.y + y;
           if (gy >= 0 && gy < ROWS) {
@@ -399,7 +514,10 @@
               id: block.id,
               type: block.type,
               text: block.text,
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+=======
               showText: index === 0,
+>>>>>>> main
             };
           }
         });
@@ -496,8 +614,14 @@
 
       function updateLShape(block) {
         if (block.type !== "lshape") return;
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        const complement = buildComplement(block.payload.noun);
+        block.text = complement.text;
+        block.payload.pattern = complement.pattern;
+=======
         const modifier = randomModifier();
         block.text = `${modifier} ${block.payload.noun}`;
+>>>>>>> main
       }
 
       function handleRotate() {
@@ -538,6 +662,12 @@
 
       function handleKey(event) {
         if (!current) return;
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+        if (["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp"].includes(event.key)) {
+          event.preventDefault();
+        }
+=======
+>>>>>>> main
         switch (event.key) {
           case "ArrowLeft":
             if (canMove(current, -1, 0)) {
@@ -609,7 +739,11 @@
               const pronoun = blocks.get(id)?.text;
               const verb = blocks.get(verbId)?.text;
               const complement = blocks.get(compId)?.text;
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+              if (pronoun && verb && complement && isValidPhrase(pronoun, verb, complement)) {
+=======
               if (pronoun && verb && complement) {
+>>>>>>> main
                 phrases.push(`${pronoun} ${verb} ${complement}`);
                 toRemove.add(id);
                 toRemove.add(verbId);
@@ -661,6 +795,34 @@
         render();
       }
 
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      function renderLabels() {
+        if (!labelLayer) return;
+        labelLayer.innerHTML = "";
+        blocks.forEach((block) => {
+          if (!block.text) return;
+          const shape = rotatedShape(block.type, block.rotation);
+          const coords = shape.map(({ x, y }) => ({
+            x: block.x + x,
+            y: block.y + y,
+          }));
+          const visible = coords.filter((pos) => pos.y >= 0);
+          if (visible.length === 0) return;
+          const minX = Math.min(...visible.map((pos) => pos.x));
+          const maxX = Math.max(...visible.map((pos) => pos.x));
+          const minY = Math.max(0, Math.min(...visible.map((pos) => pos.y)));
+          const maxY = Math.max(...visible.map((pos) => pos.y));
+          const label = document.createElement("div");
+          label.className = "block-label";
+          label.textContent = block.text;
+          label.style.gridColumn = `${minX + 1} / ${maxX + 2}`;
+          label.style.gridRow = `${minY + 1} / ${maxY + 2}`;
+          labelLayer.appendChild(label);
+        });
+      }
+
+=======
+>>>>>>> main
       function canBlockFall(block) {
         const shape = rotatedShape(block.type, block.rotation);
         return shape.every(({ x, y }) => {
@@ -672,6 +834,37 @@
         });
       }
 
+<<<<<<< codex/fix-404-error-after-deployment-5ijejk
+      function isValidPhrase(pronoun, verb, complement) {
+        if (!PRONOUNS.includes(pronoun)) return false;
+        const allConjugations = Object.values(VERBS).flatMap((forms) =>
+          Object.values(forms).flatMap((list) => list)
+        );
+        if (!allConjugations.includes(verb)) return false;
+        return isValidComplement(complement);
+      }
+
+      function isValidComplement(complement) {
+        const parts = complement.split(" ").filter(Boolean);
+        if (parts.length < 2) return false;
+        if (parts.length === 2) {
+          const [first, noun] = parts;
+          if (!NOUNS.includes(noun)) return false;
+          return ARTICLES.includes(first) || PREPOSITIONS.includes(first);
+        }
+        if (parts.length === 3) {
+          const [prep, article, noun] = parts;
+          return (
+            PREPOSITIONS.includes(prep) &&
+            ARTICLES.includes(article) &&
+            NOUNS.includes(noun)
+          );
+        }
+        return false;
+      }
+
+=======
+>>>>>>> main
       function difficultyStage(currentLevel) {
         if (currentLevel <= 2) return "basico";
         if (currentLevel <= 4) return "medio";
